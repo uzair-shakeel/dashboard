@@ -7,7 +7,7 @@ import { AiOutlinePlus } from "react-icons/ai";
 
 const SideBar = () => {
   return (
-    <div className='border-r border-[#E8E8E8] h-full p-3 w-full'>
+    <div className='border-r border-[#E8E8E8] h-full p-3 w-full relative'>
       <div className='flex items-center gap-1'>
         <Image src='/assets/profile.svg' alt='Profile' width={24} height={24} />
         <h2 className='text-[14px] leading-[17px] font-medium'>Sally Potter</h2>

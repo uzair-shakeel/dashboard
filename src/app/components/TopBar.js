@@ -31,11 +31,11 @@ const TopBar = () => {
                 <h3 className='text-[#0E0E0E] text-[14px] leading-[17px] font-normal'>Shared with timeless</h3>
                 <Image src='/assets/t.svg' alt='T' height={24} width={24} />
                 <Image src='/assets/users.svg' alt='T' height={24} width={62} className='ml-1' />
-                <button className='flex items-center gap-2 w-[100px] h-[29px] border border-[#DBDBDB] rounded-lg py-[6px] px-[8px] text-[14px] font-normal leading-[17px] '>
+                <button className='flex items-center gap-2 min-w-[100px] h-[29px] border border-[#DBDBDB] rounded-lg py-[6px] px-[8px] text-[14px] font-normal leading-[17px] '>
                     <Image src='/assets/all-apps.svg' alt='All Apps' width={15} height={15}  />
                     All apps
                 </button>
-                <button className='flex items-center gap-2 bg-[#171717] text-white w-[100px] h-[29px] border border-[#DBDBDB] rounded-lg py-[6px] px-[8px] text-[14px] font-normal leading-[17px] '>
+                <button className='flex items-center gap-2 bg-[#171717] text-white min-w-[100px] h-[29px] border border-[#DBDBDB] rounded-lg py-[6px] px-[8px] text-[14px] font-normal leading-[17px] '>
                     <GoPlus className='text-[15px] text-white' />Add deal
                 </button>
             </div>

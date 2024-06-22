@@ -4,9 +4,8 @@ import SideBar from "./components/SideBar";
 
 export default function Home() {
   return (
-    <div className="max-w-[1440px] mx-auto w-full">
-      <div className="flex">
-        <div className="min-w-[220px]">
+    <div className="max-w-[1440px] mx-auto w-full flex ">
+        <div className="w-[220px]">
           <SideBar/>
         </div>
         <div>
@@ -874,7 +873,6 @@ export default function Home() {
             </table>
           </div>
         </div>
-      </div>
     </div>
   );
 }
