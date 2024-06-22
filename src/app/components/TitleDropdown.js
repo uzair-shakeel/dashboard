@@ -29,7 +29,7 @@ const TitleDropdown = () => {
             </button>
 
             {isOpen && (
-                <div className='absolute mt-2 w-[126px] rounded-[8px] bg-white shadow-lg'>
+                <div className='absolute mt-2 w-[126px] rounded-[8px] bg-white shadow-lg z-30'>
                     <ul className='py-1'>
                         <li className='px-4 py-2 hover:bg-[#F3F3F3] cursor-pointer text-[14px]' onClick={() => handleOptionClick('Title 1')}>Title 1</li>
                         <li className='px-4 py-2 hover:bg-[#F3F3F3] cursor-pointer text-[14px]' onClick={() => handleOptionClick('Title 2')}>Title 2</li>

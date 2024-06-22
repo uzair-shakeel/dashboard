@@ -4,8 +4,8 @@ import SideBar from "./components/SideBar";
 
 export default function Home() {
   return (
-    <div className="max-w-[1440px] mx-auto w-full flex ">
-        <div className="w-[220px]">
+    <div className="max-w-[1440px] mx-auto w-full lg:flex">
+        <div className="w-[220px] lg:block hidden">
           <SideBar/>
         </div>
         <div>
