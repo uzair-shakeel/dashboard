@@ -18,7 +18,7 @@ const TableDropdown = () => {
     return (
         <div className='relative inline-block text-left'>
             <button
-                className='flex items-center gap-[6px] text-[14px] pr-[9px] py-[5px] leading-[17px] font-normal text-[#111111]'
+                className='flex items-center gap-[6px] hover:bg-[#F3F3F3] rounded-lg text-[14px] transition duration-300 px-[9px] py-[5px] leading-[17px] font-normal text-[#111111]'
                 onClick={toggleDropdown}
             >
                 <Image src="/assets/table.svg" alt="Icon" width={15} height={15} />

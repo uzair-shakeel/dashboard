@@ -4,14 +4,14 @@ import SideBar from "./components/SideBar";
 
 export default function Home() {
   return (
-    <div className="max-w-[1440px] mx-auto w-full lg:flex">
+    <div className="w-full lg:flex">
         <div className="w-[220px] lg:block hidden">
           <SideBar/>
         </div>
-        <div>
+        <div className="w-full">
           <TopBar/>
-          <div className="overflow-x-auto max-w-[1200px] w-full mx-auto pb-5">
-            <table className="min-w-[1200px] border-b border-[#DBDBDB]">
+          <div className="overflow-x-auto w-full mx-auto pb-5">
+            <table className="w-full border-b border-[#DBDBDB]">
               <thead className="bg-white">
                 <tr className="text-[12px] text-[#6C6C6C] font-[400] leading-[15px]">
                   <th className="px-4 py-1 border-b border-t border-[#DBDBDB] text-start">

@@ -54,7 +54,7 @@ const TopBar = () => {
                 {/* Filter */}
                 <div className='relative'>
                     <button
-                        className='cursor-pointer relative flex items-center gap-[6px] bg-[#F3F3F3] rounded-lg text-[14px] px-[9px] py-[5px] leading-[17px] font-normal text-[#111111]'
+                        className='cursor-pointer relative flex items-center gap-[6px] hover:bg-[#F3F3F3] transition duration-300 rounded-lg text-[14px] px-[9px] py-[5px] leading-[17px] font-normal text-[#111111]'
                         onClick={filterDropdown}
                     >
                         <Image src='/assets/filter.svg' alt='Icon' width={15} height={15} />
@@ -62,7 +62,7 @@ const TopBar = () => {
                     </button>
 
                     {isFilter && (
-                        <div className='shadow-custom bg-white absolute py-[12px] px-[14px] top-8  sm:left-[-100px] md:left-0 rounded-2xl border border-[#DDDDDD]  z-20'>
+                        <div className='shadow-custom bg-white absolute py-[12px] px-[14px] top-8 sm:left-[-100px] md:left-0 rounded-2xl border border-[#DDDDDD] z-20'>
                             <div className='flex flex-wrap sm:flex-nowrap items-center gap-2'>
                                 <h3 className='ml-[16px] text-[#3C3C3C] text-[14px] leading-[17px] font-normal'>Where</h3>
                                 <div className='flex flex-wrap sm:flex-nowrap items-center gap-2'>
@@ -108,13 +108,13 @@ const TopBar = () => {
                 </div>
 
                 {/* Sort */}
-                <button className='flex items-center gap-[6px] text-[14px] px-[9px] py-[5px] leading-[17px] font-normal text-[#111111]'>
+                <button className='flex items-center gap-[6px] hover:bg-[#F3F3F3] transition-all duration-300 rounded-lg text-[14px] px-[9px] py-[5px] leading-[17px] font-normal text-[#111111]'>
                     <Image src='/assets/sort.svg' alt='Icon' width={15} height={15} />
                     Sort
                 </button>
 
                 {/* Shared */}
-                <button className='flex items-center gap-[6px] px-[9px] py-[5px] text-[14px] leading-[17px] font-normal text-[#0057D6]'>
+                <button className='flex items-center gap-[6px] hover:bg-[#F3F3F3] rounded-lg transition-all duration-300 px-[9px] py-[5px] text-[14px] leading-[17px] font-normal text-[#0057D6]'>
                     <Image src='/assets/shared.svg' alt='Icon' width={15} height={15} />
                     Shared
                 </button>
