@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect  } from "react";
 import { RxCross2 } from "react-icons/rx";
 import { MdOutlineModeEdit } from "react-icons/md";
 import { TbDotsVertical } from "react-icons/tb";
@@ -14,18 +14,11 @@ const Panel = () => {
   const [groupName, setGroupName] = useState("Creative Sleepers Cell");
   const [isEditing, setIsEditing] = useState(false);
   const [tagInput, setTagInput] = useState("");
-  const [tags, setTags] = useState([
-    "harm",
-    "pay",
-    "dummy",
-    "sleepers",
-    "epeda",
-    "mattress",
-  ]);
-
-
+  const [tags, setTags] = useState(["harm", "pay", "dummy", "sleepers", "epeda", "mattress",]);
   const [isMemberOne, setIsMemberOne] = useState(false);
   const [isMemberTwo, setIsMemberTwo] = useState(false);
+  const popupRefOne = useRef(null);
+  const popupRefTwo = useRef(null);
 
   const togglePopup = () => {
     setIsMemberOne(!isMemberOne);
@@ -69,6 +62,27 @@ const Panel = () => {
     const updatedTags = tags.filter((_, index) => index !== tagIndex);
     setTags(updatedTags);
   };
+
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        popupRefOne.current &&
+        !popupRefOne.current.contains(event.target) &&
+        popupRefTwo.current &&
+        !popupRefTwo.current.contains(event.target)
+      ) {
+        setIsMemberOne(false);
+        setIsMemberTwo(false);
+      }
+    };
+
+    document.addEventListener('click', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, []);
 
   return (
     <div>
@@ -224,7 +238,7 @@ const Panel = () => {
             </thead>
             <tbody className="text-gray-600 font-light">
               {/* Data One */}
-              <tr className="border-b border-gray-200 hover:bg-gray-100">
+              <tr className="border-b border-gray-200 hover:bg-gray-100 ">
                 <td className="py-8 px-4 flex gap-2 items-center text-left whitespace-nowrap">
                   <Image src='/1.png' alt="Profile" width={40} height={40} className="rounded-full" />
                   <div>
@@ -232,11 +246,11 @@ const Panel = () => {
                     <p className="text-[12px]">staff142@orgx.com</p>
                   </div>
                 </td>
-                <td className="py-3 px-6 text-left whitespace-nowrap">
+                <td className="py-3 px-6 text-left whitespace-nowrap ">
                   <div className="flex justify-between text-[13px] font-medium">
                     Data team#1-#Specialist
                     {/* popup */}
-                    <div className="relative inline-block">
+                    <div className="relative inline-block" ref={popupRefTwo}>
                       <button onClick={togglePopup1} className="text-black cursor-pointer">
                         <TbDotsVertical />
                       </button>
@@ -278,7 +292,7 @@ const Panel = () => {
                   <div className="flex justify-between text-[13px] font-medium">
                     Data team#1-#Specialist
                     {/* popup */}
-                    <div className="relative inline-block">
+                    <div className="relative inline-block" ref={popupRefOne}>
                       <button onClick={togglePopup} className="text-black cursor-pointer">
                         <TbDotsVertical />
                       </button>
