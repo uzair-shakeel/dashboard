@@ -1,10 +1,24 @@
+'use client'
+import React, { useState } from 'react';
 import Image from "next/image";
 import TopBar from "./components/TopBar";
 import SideBar from "./components/SideBar";
 import Group from './components/Group';
+import { AiOutlineEdit } from "react-icons/ai";
+import { RxCross2 } from "react-icons/rx";
+
+
 
 export default function Home() {
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
 
+  const handleCellClick = () => {
+    setIsPopupOpen(true);
+  };
+
+  const closePopup = () => {
+    setIsPopupOpen(false);
+  };
   return (
     <div className="w-full lg:flex">
         <div className="w-[220px] lg:block hidden">
@@ -22,18 +36,21 @@ export default function Home() {
                       Title
                     </div>
                   </th>
+
                   <th className="px-4 py-1 border border-[#DBDBDB] ">
                     <div className="flex items-center gap-2">
                       <Image src="/assets/companies.svg" alt="Companies" width={17} height={17} />
                       Companies
                     </div>
                   </th>
+
                   <th className="px-4 py-1 border border-[#DBDBDB] ">
                     <div className="flex items-center gap-2">
                       <Image src="/assets/tags.svg" alt="Tags" width={17} height={17} />
                       Tags
                     </div>
                   </th>
+
                   <th className="px-4 py-1 border border-[#DBDBDB] ">
                     <div className="flex items-center gap-2">
                       <Image src="/assets/people.svg" alt="Prople" width={17} height={17} />
@@ -47,10 +64,18 @@ export default function Home() {
                       Stage
                     </div>
                   </th>
+                  
                   <th className="px-4 py-1 border border-[#DBDBDB] ">
                     <div className="flex items-center gap-2">
                     <Image src="/assets/date.svg" alt="Close Date" width={17} height={17} />
                       Close date
+                    </div>
+                  </th>
+
+                  <th className="px-4 py-1 border border-[#DBDBDB] ">
+                    <div className="flex items-center gap-2">
+                    <AiOutlineEdit className="text-xl"/>
+                      <h2>Edit</h2>
                     </div>
                   </th>
                 </tr>
@@ -94,7 +119,9 @@ export default function Home() {
                     </div>
                   </td>
                   <td className="px-4 py-1 border border-[#DBDBDB] ">Mar 31</td>
+                  <td className="px-4 py-1 border border-[#DBDBDB] hover:underline underline-offset-2 cursor-pointer" onClick={handleCellClick}>Edit</td>
                 </tr>
+
                 <tr className="text-[14px]">
                   <td className="px-4 py-1 h-full">
                     <div className="my-auto h-full flex items-center">
@@ -119,7 +146,9 @@ export default function Home() {
                     </div>
                   </td>
                   <td className="px-4 py-1 border border-[#DBDBDB] ">Apr 08</td>
+                  <td className="px-4 py-1 border border-[#DBDBDB] hover:underline underline-offset-2 cursor-pointer" onClick={handleCellClick}>Edit</td>
                 </tr>
+
                 <tr className="text-[14px]">
                   <td className="px-4 py-1 h-full border-b border-t border-[#DBDBDB] ">
                     <div className="my-auto h-full flex items-center">
@@ -159,7 +188,9 @@ export default function Home() {
                     </div>
                   </td>
                   <td className="px-4 py-1 border border-[#DBDBDB] ">May 14</td>
+                  <td className="px-4 py-1 border border-[#DBDBDB] hover:underline underline-offset-2 cursor-pointer" onClick={handleCellClick}>Edit</td>
                 </tr>
+
                 <tr className="text-[14px]">
                   <td className="px-4 py-1  h-full border-b border-t border-[#DBDBDB] ">
                     <div className="my-auto h-full flex items-center">
@@ -201,7 +232,9 @@ export default function Home() {
                     </div>
                   </td>
                   <td className="px-4 py-1 border border-[#DBDBDB] ">Apr 28</td>
+                  <td className="px-4 py-1 border border-[#DBDBDB] hover:underline underline-offset-2 cursor-pointer" onClick={handleCellClick}>Edit</td>
                 </tr>
+
                 <tr className="text-[14px]">
                   <td className="px-4 py-1  h-full border-b border-t border-[#DBDBDB] ">
                     <div className="my-auto h-full flex items-center">
@@ -240,7 +273,9 @@ export default function Home() {
                     </div>
                   </td>
                   <td className="px-4 py-1 border border-[#DBDBDB] ">Jun 17</td>
+                  <td className="px-4 py-1 border border-[#DBDBDB] hover:underline underline-offset-2 cursor-pointer" onClick={handleCellClick}>Edit</td>
                 </tr>
+
                 <tr className="text-[14px]">
                   <td className="px-4 py-1  h-full border-b border-t border-[#DBDBDB] ">
                     <div className="my-auto h-full flex items-center">
@@ -280,7 +315,9 @@ export default function Home() {
                     </div>
                   </td>
                   <td className="px-4 py-1 border border-[#DBDBDB] ">Aug 23</td>
+                  <td className="px-4 py-1 border border-[#DBDBDB] hover:underline underline-offset-2 cursor-pointer" onClick={handleCellClick}>Edit</td>
                 </tr>
+
                 <tr className="text-[14px]">
                   <td className="px-4 py-1  h-full border-b border-t border-[#DBDBDB] ">
                     <div className="my-auto h-full flex items-center">
@@ -324,7 +361,9 @@ export default function Home() {
                     </div>
                   </td>
                   <td className="px-4 py-1 border border-[#DBDBDB] ">May 19</td>
+                  <td className="px-4 py-1 border border-[#DBDBDB] hover:underline underline-offset-2 cursor-pointer" onClick={handleCellClick}>Edit</td>
                 </tr>
+
                 <tr className="text-[14px]">
                   <td className="px-4 py-1  h-full border-b border-t border-[#DBDBDB] ">
                     <div className="my-auto h-full flex items-center">
@@ -364,7 +403,9 @@ export default function Home() {
                     </div>
                   </td>
                   <td className="px-4 py-1 border border-[#DBDBDB] ">Apr 27</td>
+                  <td className="px-4 py-1 border border-[#DBDBDB] hover:underline underline-offset-2 cursor-pointer" onClick={handleCellClick}>Edit</td>
                 </tr>
+
                 <tr className="text-[14px]">
                   <td className="px-4 py-1  h-full border-b border-t border-[#DBDBDB] ">
                     <div className="my-auto h-full flex items-center">
@@ -404,7 +445,9 @@ export default function Home() {
                     </div>
                   </td>
                   <td className="px-4 py-1 border border-[#DBDBDB] ">Sep 30</td>
+                  <td className="px-4 py-1 border border-[#DBDBDB] hover:underline underline-offset-2 cursor-pointer" onClick={handleCellClick}>Edit</td>
                 </tr>
+
                 <tr className="text-[14px]">
                   <td className="px-4 py-1  h-full border-b border-t border-[#DBDBDB] ">
                     <div className="my-auto h-full flex items-center">
@@ -444,7 +487,9 @@ export default function Home() {
                     </div>
                   </td>
                   <td className="px-4 py-1 border border-[#DBDBDB] ">Jul 14</td>
+                  <td className="px-4 py-1 border border-[#DBDBDB] hover:underline underline-offset-2 cursor-pointer" onClick={handleCellClick}>Edit</td>
                 </tr>
+
                 <tr className="text-[14px]">
                   <td className="px-4 py-1  h-full border-b border-t border-[#DBDBDB] ">
                     <div className="my-auto h-full flex items-center">
@@ -489,7 +534,9 @@ export default function Home() {
                     </div>
                   </td>
                   <td className="px-4 py-1 border border-[#DBDBDB] ">Mar 31</td>
+                  <td className="px-4 py-1 border border-[#DBDBDB] hover:underline underline-offset-2 cursor-pointer" onClick={handleCellClick}>Edit</td>
                 </tr>
+
                 <tr className="text-[14px]">
                   <td className="px-4 py-1  h-full border-b border-t border-[#DBDBDB] ">
                     <div className="my-auto h-full flex items-center">
@@ -531,7 +578,9 @@ export default function Home() {
                     </div>
                   </td>
                   <td className="px-4 py-1 border border-[#DBDBDB] ">Jun 12</td>
+                  <td className="px-4 py-1 border border-[#DBDBDB] hover:underline underline-offset-2 cursor-pointer" onClick={handleCellClick}>Edit</td>
                 </tr>
+
                 <tr className="text-[14px]">
                   <td className="px-4 py-1  h-full border-b border-t border-[#DBDBDB] ">
                     <div className="my-auto h-full flex items-center">
@@ -573,7 +622,9 @@ export default function Home() {
                     </div>
                   </td>
                   <td className="px-4 py-1 border border-[#DBDBDB] ">Sep 19</td>
+                  <td className="px-4 py-1 border border-[#DBDBDB] hover:underline underline-offset-2 cursor-pointer" onClick={handleCellClick}>Edit</td>
                 </tr>
+
                 <tr className="text-[14px]">
                   <td className="px-4 py-1  h-full border-b border-t border-[#DBDBDB] ">
                     <div className="my-auto h-full flex items-center">
@@ -617,7 +668,9 @@ export default function Home() {
                     </div>
                   </td>
                   <td className="px-4 py-1 border border-[#DBDBDB] ">Mar 28</td>
+                  <td className="px-4 py-1 border border-[#DBDBDB] hover:underline underline-offset-2 cursor-pointer" onClick={handleCellClick}>Edit</td>
                 </tr>
+
                 <tr className="text-[14px]">
                   <td className="px-4 py-1  h-full border-b border-t border-[#DBDBDB] ">
                     <div className="my-auto h-full flex items-center">
@@ -659,7 +712,9 @@ export default function Home() {
                     </div>
                   </td>
                   <td className="px-4 py-1 border border-[#DBDBDB] ">Aug 24</td>
+                  <td className="px-4 py-1 border border-[#DBDBDB] hover:underline underline-offset-2 cursor-pointer" onClick={handleCellClick}>Edit</td>
                 </tr>
+
                 <tr className="text-[14px]">
                   <td className="px-4 py-1  h-full border-b border-t border-[#DBDBDB] ">
                     <div className="my-auto h-full flex items-center">
@@ -703,7 +758,9 @@ export default function Home() {
                     </div>
                   </td>
                   <td className="px-4 py-1 border border-[#DBDBDB] ">Aug 14</td>
+                  <td className="px-4 py-1 border border-[#DBDBDB] hover:underline underline-offset-2 cursor-pointer" onClick={handleCellClick}>Edit</td>
                 </tr>
+
                 <tr className="text-[14px]">
                   <td className="px-4 py-1  h-full border-b border-t border-[#DBDBDB] ">
                     <div className="my-auto h-full flex items-center">
@@ -747,7 +804,9 @@ export default function Home() {
                     </div>
                   </td>
                   <td className="px-4 py-1 border border-[#DBDBDB] ">Oct 23</td>
+                  <td className="px-4 py-1 border border-[#DBDBDB] hover:underline underline-offset-2 cursor-pointer" onClick={handleCellClick}>Edit</td>
                 </tr>
+
                 <tr className="text-[14px]">
                   <td className="px-4 py-1  h-full border-b border-t border-[#DBDBDB] ">
                     <div className="my-auto h-full flex items-center">
@@ -789,7 +848,9 @@ export default function Home() {
                     </div>
                   </td>
                   <td className="px-4 py-1 border border-[#DBDBDB] ">Mar 25</td>
+                  <td className="px-4 py-1 border border-[#DBDBDB] hover:underline underline-offset-2 cursor-pointer" onClick={handleCellClick}>Edit</td>
                 </tr>
+
                 <tr className="text-[14px]">
                   <td className="px-4 py-1  h-full border-b border-t border-[#DBDBDB] ">
                     <div className="my-auto h-full flex items-center">
@@ -831,7 +892,9 @@ export default function Home() {
                     </div>
                   </td>
                   <td className="px-4 py-1 border border-[#DBDBDB] ">July 11</td>
+                  <td className="px-4 py-1 border border-[#DBDBDB] hover:underline underline-offset-2 cursor-pointer" onClick={handleCellClick}>Edit</td>
                 </tr>
+
                 <tr className="text-[14px]">
                   <td className="px-4 py-1  h-full border-b border-t border-[#DBDBDB] ">
                     <div className="my-auto h-full flex items-center">
@@ -870,12 +933,23 @@ export default function Home() {
                     </div>
                   </td>
                   <td className="px-4 py-1 border border-[#DBDBDB] ">Oct 19</td>
+                  <td className="px-4 py-1 border border-[#DBDBDB] hover:underline underline-offset-2 cursor-pointer" onClick={handleCellClick}>Edit</td>
                 </tr>
               </tbody>
             </table>
-          </div>
-          <div>
-            <Group/>
+
+            {/* Panel */}
+            {isPopupOpen && (
+              <div className="bg-white shadow-2xl border-l border-stone-300 max-w-[600px] sm:w-[600px] absolute top-0 right-0 ml-20">
+                <div className="relative p-2 sm:p-4">
+                  {/* Close Button */}
+                  <button onClick={closePopup} className="absolute lg:right-3 right-14 top-3 border rounded-full z-50  text-xl p-1 hover:bg-gray-100 transition duration-300">
+                    <RxCross2 />
+                  </button>
+                  <Group />
+                </div>
+              </div>
+            )}
           </div>
         </div>
     </div>
