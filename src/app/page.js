@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import Image from "next/image";
 import TopBar from "./components/TopBar";
 import SideBar from "./components/SideBar";
-import Group from './components/Group';
+import Panel from './components/Panel';
 import { AiOutlineEdit } from "react-icons/ai";
 import { RxCross2 } from "react-icons/rx";
 
@@ -946,7 +946,7 @@ export default function Home() {
                   <button onClick={closePopup} className="absolute lg:right-3 right-14 top-3 border rounded-full z-50  text-xl p-1 hover:bg-gray-100 transition duration-300">
                     <RxCross2 />
                   </button>
-                  <Group />
+                  <Panel />
                 </div>
               </div>
             )}

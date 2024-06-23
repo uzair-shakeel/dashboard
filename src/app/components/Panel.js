@@ -5,11 +5,12 @@ import { RxCross2 } from "react-icons/rx";
 import { MdOutlineModeEdit } from "react-icons/md";
 import { TbDotsVertical } from "react-icons/tb";
 import { CiSaveDown2 } from "react-icons/ci";
+import { RiArrowLeftRightFill } from "react-icons/ri";
+import { RiArrowUpDownLine } from "react-icons/ri";
+import { RiDeleteBin6Line } from "react-icons/ri";
+import MemberManage from "./MemberManage";
 
-
-const Group = () => {
-  const [popoverVisible, setPopoverVisible] = useState(false);
-  const [popoverPosition, setPopoverPosition] = useState({ top: 0, left: 0 });
+const Panel = () => {
   const [groupName, setGroupName] = useState("Creative Sleepers Cell");
   const [isEditing, setIsEditing] = useState(false);
   const [tagInput, setTagInput] = useState("");
@@ -22,34 +23,17 @@ const Group = () => {
     "mattress",
   ]);
 
-  const handlePopoverToggle = (event) => {
-    const rect = event.target.getBoundingClientRect();
-    const position = {
-      top: rect.top + window.pageYOffset + 10, // Adjust as per your UI design
-      right: rect.right + window.pageXOffset - 1, // Adjust as per your UI design
-    };
-    setPopoverPosition(position);
-    setPopoverVisible(!popoverVisible);
+
+  const [isMemberOne, setIsMemberOne] = useState(false);
+  const [isMemberTwo, setIsMemberTwo] = useState(false);
+
+  const togglePopup = () => {
+    setIsMemberOne(!isMemberOne);
   };
 
-  const Popover = () => (
-    <div className="absolute z-10 bg-white shadow-md rounded-lg p-2 right-[7%]">
-      <ul>
-        <li className="cursor-pointer rounded-lg hover:bg-gray-200 px-4 py-2">
-          Change Member
-        </li>
-        <li className="cursor-pointer rounded-lg hover:bg-gray-200 px-4 py-2">
-          Change Position
-        </li>
-        <li className="cursor-pointer rounded-lg text-red-600 hover:bg-gray-200 px-4 py-2">
-          Delete Position
-        </li>
-        <li className="cursor-pointer rounded-lg text-red-600 hover:bg-gray-200 px-4 py-2">
-          Delete Member
-        </li>
-      </ul>
-    </div>
-  );
+  const togglePopup1 = () => {
+    setIsMemberTwo(!isMemberTwo);
+  };
 
   const handleInputChange = (event) => {
     setGroupName(event.target.value);
@@ -251,13 +235,39 @@ const Group = () => {
                 <td className="py-3 px-6 text-left whitespace-nowrap">
                   <div className="flex justify-between text-[13px] font-medium">
                     Data team#1-#Specialist
-                    <TbDotsVertical className="text-black cursor-pointer" />
+                    {/* popup */}
+                    <div className="relative inline-block">
+                      <button onClick={togglePopup1} className="text-black cursor-pointer">
+                        <TbDotsVertical />
+                      </button>
+                      {isMemberTwo && (
+                        <div className="absolute right-0 top-5 z-50 bg-white border border-gray-300 rounded-md shadow-lg">
+                          <div className="py-2 p-0.5">                           
+                          <ul>
+                              <li className="flex items-center gap-2 cursor-pointer rounded-lg hover:bg-gray-200 px-3 py-2">
+                                  <RiArrowUpDownLine /> Change Member
+                              </li>
+                              <li className="flex items-center gap-2 cursor-pointer rounded-lg hover:bg-gray-200 px-3 py-2">
+                                  <RiArrowLeftRightFill />Change Position
+                              </li>
+                              <li className="flex items-center gap-2 cursor-pointer rounded-lg text-red-600 hover:bg-gray-200 px-3 py-2">
+                                  <RiDeleteBin6Line />Delete Position
+                              </li>
+                              <li className="flex items-center gap-2 cursor-pointer rounded-lg text-red-600 hover:bg-gray-200 px-3 py-2">
+                                  <RiDeleteBin6Line /> Delete Member
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      )}
+                    </div>
                   </div>
                 </td>
               </tr>
+
               {/* Data Two */}
               <tr className="border-b border-gray-200 hover:bg-gray-100">
-                <td className="py-8 px-4 flex gap-2 items-center  text-left whitespace-nowrap">
+                <td className="py-8 px-4 flex gap-2 items-center text-left whitespace-nowrap">
                   <Image src='/1.png' alt="Profile" width={40} height={40} className="rounded-full" />
                   <div>
                     <p className="text-[14px] font-semibold">Staff #142</p>
@@ -267,7 +277,32 @@ const Group = () => {
                 <td className="py-3 px-6 text-left whitespace-nowrap">
                   <div className="flex justify-between text-[13px] font-medium">
                     Data team#1-#Specialist
-                    <TbDotsVertical className="text-black cursor-pointer" />
+                    {/* popup */}
+                    <div className="relative inline-block">
+                      <button onClick={togglePopup} className="text-black cursor-pointer">
+                        <TbDotsVertical />
+                      </button>
+                      {isMemberOne && (
+                        <div className="absolute right-0 mt-2 z-50 bg-white border border-gray-300 rounded-md shadow-lg">
+                          <div className="py-2 p-0.5">                           
+                            <ul>
+                              <li className="flex items-center gap-2 cursor-pointer rounded-lg hover:bg-gray-200 px-3 py-2">
+                                <RiArrowUpDownLine /> Change Member
+                              </li>
+                              <li className="flex items-center gap-2 cursor-pointer rounded-lg hover:bg-gray-200 px-3 py-2">
+                                <RiArrowLeftRightFill />Change Position
+                              </li>
+                              <li className="flex items-center gap-2 cursor-pointer rounded-lg text-red-600 hover:bg-gray-200 px-3 py-2">
+                                <RiDeleteBin6Line />Delete Position
+                              </li>
+                              <li className="flex items-center gap-2 cursor-pointer rounded-lg text-red-600 hover:bg-gray-200 px-3 py-2">
+                                <RiDeleteBin6Line /> Delete Member
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      )}
+                    </div>
                   </div>
                 </td>
               </tr>
@@ -284,4 +319,4 @@ const Group = () => {
   );
 };
 
-export default Group;
+export default Panel;
