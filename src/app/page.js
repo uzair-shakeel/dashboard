@@ -1,14 +1,16 @@
 import Image from "next/image";
 import TopBar from "./components/TopBar";
 import SideBar from "./components/SideBar";
+import Group from './components/Group';
 
 export default function Home() {
+
   return (
     <div className="w-full lg:flex">
         <div className="w-[220px] lg:block hidden">
           <SideBar/>
         </div>
-        <div className="w-full">
+        <div className="w-full relative">
           <TopBar/>
           <div className="overflow-x-auto w-full mx-auto pb-5">
             <table className="min-w-[1200px] lg:min-w-full border-b border-[#DBDBDB]">
@@ -871,6 +873,9 @@ export default function Home() {
                 </tr>
               </tbody>
             </table>
+          </div>
+          <div>
+            <Group/>
           </div>
         </div>
     </div>
