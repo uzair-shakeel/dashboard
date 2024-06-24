@@ -102,15 +102,15 @@ const Panel = () => {
                   type="text"
                   value={groupName}
                   onChange={handleInputChange}
-                  className="text-[16px] font-semibold w-[150px] border rounded-sm px-2 outline-none"
+                  className="text-[16px] font-medium text-[#1A1A1A] border rounded-lg px-2 outline-none"
                 />
               ) : (
-                <h1 className="text-[16px] font-semibold">{groupName}</h1>
+                <h1 className="text-[16px] font-medium text-[#1A1A1A]">{groupName}</h1>
               )}
               {isEditing ? (
-                <button onClick={handleSaveClick}><CiSaveDown2 className="text-[25px]" /></button>
+                <button onClick={handleSaveClick}><CiSaveDown2 className="text-[25px] text-[#6C6C6C]" /></button>
               ) : (
-                <button onClick={handleEditClick}><MdOutlineModeEdit className="text-[20px]" /></button>
+                <button onClick={handleEditClick}><MdOutlineModeEdit className="text-[20px] text-[#6C6C6C]" /></button>
               )}
             </div>
             <h3 className="text-[14px] font-light">Create date: 19 Jun 2024</h3>
@@ -118,60 +118,57 @@ const Panel = () => {
       </div>
       
       {/* Group type */}
-      <div className="pt-3 px-2">
-        <p className="py-2 text-[13px] font-semibold">Group type</p>
-        <input
-          type="text"
-          placeholder="Data Team"
-          className="w-full p-2 bg-[#f9fcfd] text-[13px] border-gray-400 border outline-none rounded-md"
-        />
+      <div className="pt-2 px-2">
+        <p className="py-2 text-[14px] font-medium text-[#1A1A1A]">Group type</p>
+        <h2 className="w-full p-2 bg-[#F3F3F3] text-[14px] border border-[#DBDBDB] outline-none rounded-md">Data Team</h2>
       </div>
 
       {/* Purpose */}
-      <div className="pt-3 px-2">
-        <p className="py-2 text-[13px] font-semibold">Purpose</p>
+      <div className="pt-2 px-2">
+        <p className="py-2 text-[14px] font-medium text-[#1A1A1A]">Purpose</p>
         <textarea
           type="text"
           cols={1}
           rows={3}
           placeholder="Connecting people and ideas but also making sure they go to sleep afterwards"
-          className="w-full p-2 bg-[#f9fcfd] text-[13px] border-gray-400 border outline-none rounded-md"
+          className="w-full p-2 bg-[#F3F3F3] text-[14px] border-[#DBDBDB] border outline-none rounded-md resize-none placeholder:text-[14px]"
         />
       </div>
       
       {/* Parent Group */}
-      <div className="pt-3 px-2">
-        <p className="py-2 text-[13px] font-semibold">Parent Group</p>
+      <div className="pt-2 px-2">
+        <p className="py-2 text-[14px] font-medium text-[#1A1A1A]">Parent Group</p>
         <select
           placeholder="select..."
-          className="w-full p-2 bg-[#f9fcfd] text-[13px] border-gray-400 border outline-none rounded-md"
+          className="w-full p-2 bg-[#F3F3F3] text-[14px] font-normal border-[#DBDBDB] border outline-none rounded-md"
         >
-          <option>I dont know</option>
-          <option>What</option>
-          <option>to Write</option>
+          <option disabled selected>Select...</option>
+          <option className="">Americas</option>
+          <option>DACH</option>
+          <option>South Europe</option>
         </select>
       </div>
 
       {/* Group responsible for */}
-      <div className="pt-3 px-2">
-        <p className="py-2 text-[13px] font-semibold">Group responsible for</p>
+      <div className="pt-2 px-2">
+        <p className="py-2 text-[14px] font-medium text-[#1A1A1A]">Group responsible for</p>
         <input
           type="text"
           placeholder="Add a tag..."
           value={tagInput}
           onChange={handleTagInputChange}
           onKeyDown={handleKeyDown}
-          className="w-full p-2 bg-[#f9fcfd] text-[13px] border-gray-400 border outline-none rounded-md"
+          className="w-full p-2 bg-[#F3F3F3] text-[14px] border-[#DBDBDB] border outline-none rounded-md"
         />
         <div className="flex flex-wrap gap-2 py-2">
           {tags.map((tag, index) => (
             <div
               key={index}
-              className="flex items-center gap-1 text-[13px] text-purple-800 cursor-pointer bg-purple-200 rounded-lg py-1 px-3"
+              className="flex items-center gap-1 text-[14px] text-[#1A1A1A] cursor-pointer bg-[#F3F3F3] rounded-lg py-1 px-3"
             >
               <span>{tag}</span>
               <button onClick={() => handleDeleteTag(index)}>
-                <RxCross2 />
+                <RxCross2 className=""/>
               </button>
             </div>
           ))}
@@ -179,71 +176,71 @@ const Panel = () => {
       </div>
 
       {/* Unfulfilled Positions */}
-      <div className="text-[13px] pt-3 px-2">
-        <p className="font-bold">Unfulfilled Positions (3)</p>
+      <div className="text-[14px] pt-2 px-2">
+        <p className="text-[14px] font-medium text-[#1A1A1A]">Unfulfilled Positions (3)</p>
         <div className=" pt-3 flex justify-between items-center">
           <div className="flex gap-2 items-center">
-            <button className="text-gray-600 text-2xl flex items-center justify-center border rounded-full border-dashed border-gray-600 w-10 h-10">
+            <button className="text-gray-600 text-2xl flex items-center justify-center border rounded-full border-dashed border-gray-600 w-8 h-8">
               +
             </button>
             <div>
-              <p className="font-semibold">Assign Group Member</p>
-              <p className="text-gray-600">Data team#2 - #Strategist</p>
+              <p className="text-[#1A1A1A] font-medium text-[14px]">Assign Group Member</p>
+              <p className="text-[#1A1A1A] font-normal text-[13px]">Data team#2 - #Strategist</p>
             </div>
           </div>
           <button className="text-red-600">Delete</button>
         </div>
         <div className=" pt-3 flex justify-between items-center">
           <div className="flex gap-2 items-center">
-            <button className="text-gray-600 text-2xl flex items-center justify-center border rounded-full border-dashed border-gray-600 w-10 h-10">
+            <button className="text-gray-600 text-2xl flex items-center justify-center border rounded-full border-dashed border-gray-600 w-8 h-8">
               +
             </button>
             <div>
-              <p className="font-semibold">Assign Group Member</p>
-              <p className="text-gray-600">Data team#4 - #Developer</p>
+              <p className="text-[#1A1A1A] font-medium text-[14px]">Assign Group Member</p>
+              <p className="text-[#1A1A1A] font-normal text-[13px]">Data team#4 - #Developer</p>
             </div>
           </div>
           <button className="text-red-600">Delete</button>
         </div>
         <div className=" pt-3 flex justify-between items-center">
           <div className="flex gap-2 items-center">
-            <button className="text-gray-600 text-2xl flex items-center justify-center border rounded-full border-dashed border-gray-600 w-10 h-10">
+            <button className="text-gray-600 text-2xl flex items-center justify-center border rounded-full border-dashed border-gray-600 w-8 h-8">
               +
             </button>
             <div>
-              <p className="font-semibold">Assign Group Member</p>
-              <p className="text-gray-600">Data team#0 - #Executive</p>
+              <p className="text-[#1A1A1A] font-medium text-[14px]">Assign Group Member</p>
+              <p className="text-[#1A1A1A] font-normal text-[13px]">Data team#0 - #Executive</p>
             </div>
           </div>
           <button className="text-red-600">Delete</button>
         </div>
 
-        <button className="text-purple-600  py-3   gap-3">
+        <button className="text-[#0057D6] py-3 gap-3">
           <div className="flex items-center gap-3">
-            <p className="text-xl ">+</p>
-            <p className="pt-1">Add new position</p>
+            <p className="text-[14px]">+</p>
+            <p className="pt-1 text-[14px] font-normal">Add new position</p>
           </div>
         </button>
       </div>
 
       {/* Members */}
-      <div className="flex flex-col border border-gray-200 bg-white w-full shadow-md rounded-lg overflow-hidden">
-        <div className="flex-1 overflow-x-auto w-full">
-          <table className="w-full text-[13px]">
+      <div className="flex flex-col border border-gray-200 bg-white w-full shadow-md rounded-lg relative">
+        <div className="flex-1 w-full">
+          <table className="w-full text-[14px]">
             <thead>
-              <tr className="bg-gray-200 text-gray-600  leading-normal">
-                <th className="py-3 px-6 text-left">Member</th>
-                <th className="py-3 px-6 text-left">Position</th>
+              <tr className="bg-[#F3F3F3] leading-normal">
+                <th className="py-2 px-6 text-left font-semibold text-[14px] text-[#6C6C6C]">Member</th>
+                <th className="py-2 px-6 text-left font-semibold text-[14px] text-[#6C6C6C]">Position</th>
               </tr>
             </thead>
             <tbody className="text-gray-600 font-light">
               {/* Data One */}
-              <tr className="border-b border-gray-200 hover:bg-gray-100 ">
-                <td className="py-8 px-4 flex gap-2 items-center text-left whitespace-nowrap">
-                  <Image src='/1.png' alt="Profile" width={40} height={40} className="rounded-full" />
+              <tr className="border-b border-gray-200">
+                <td className="pt-7 pb-6 px-4 flex gap-2 items-center text-left whitespace-nowrap">
+                  <Image src='/1.png' alt="Profile" width={30} height={30} className="rounded-full" />
                   <div>
-                    <p className="text-[14px] font-semibold">Staff #142</p>
-                    <p className="text-[12px]">staff142@orgx.com</p>
+                    <p className="text-[14px] text-[#1A1A1A] font-medium">Staff #142</p>
+                    <p className="text-[12px] text-[#1A1A1A] font-normal">staff142@orgx.com</p>
                   </div>
                 </td>
                 <td className="py-3 px-6 text-left whitespace-nowrap ">
@@ -258,17 +255,17 @@ const Panel = () => {
                         <div className="absolute right-0 top-5 z-50 bg-white border border-gray-300 rounded-md shadow-lg">
                           <div className="py-2 p-0.5">                           
                           <ul>
-                              <li className="flex items-center gap-2 cursor-pointer rounded-lg hover:bg-gray-200 px-3 py-2">
-                                  <RiArrowUpDownLine /> Change Member
+                              <li className="flex items-center gap-2 text-[12px] cursor-pointer rounded-lg hover:bg-gray-200 px-3 py-1">
+                                <RiArrowUpDownLine /> Change Member
                               </li>
-                              <li className="flex items-center gap-2 cursor-pointer rounded-lg hover:bg-gray-200 px-3 py-2">
-                                  <RiArrowLeftRightFill />Change Position
+                              <li className="flex items-center gap-2 text-[12px] cursor-pointer rounded-lg hover:bg-gray-200 px-3 py-1">
+                                <RiArrowLeftRightFill />Change Position
                               </li>
-                              <li className="flex items-center gap-2 cursor-pointer rounded-lg text-red-600 hover:bg-gray-200 px-3 py-2">
-                                  <RiDeleteBin6Line />Delete Position
+                              <li className="flex items-center gap-2 text-[12px] cursor-pointer rounded-lg text-red-600 hover:bg-gray-200 px-3 py-1">
+                                <RiDeleteBin6Line />Delete Position
                               </li>
-                              <li className="flex items-center gap-2 cursor-pointer rounded-lg text-red-600 hover:bg-gray-200 px-3 py-2">
-                                  <RiDeleteBin6Line /> Delete Member
+                              <li className="flex items-center gap-2 text-[12px] cursor-pointer rounded-lg text-red-600 hover:bg-gray-200 px-3 py-1">
+                                <RiDeleteBin6Line /> Delete Member
                               </li>
                             </ul>
                           </div>
@@ -282,34 +279,34 @@ const Panel = () => {
               {/* Data Two */}
               <tr className="border-b border-gray-200 hover:bg-gray-100">
                 <td className="py-8 px-4 flex gap-2 items-center text-left whitespace-nowrap">
-                  <Image src='/1.png' alt="Profile" width={40} height={40} className="rounded-full" />
+                  <Image src='/1.png' alt="Profile" width={30} height={30} className="rounded-full" />
                   <div>
-                    <p className="text-[14px] font-semibold">Staff #142</p>
-                    <p className="text-[12px]">staff142@orgx.com</p>
+                    <p className="text-[14px] text-[#1A1A1A] font-medium">Staff #142</p>
+                    <p className="text-[12px] text-[#1A1A1A] font-normal">staff142@orgx.com</p>
                   </div>
                 </td>
                 <td className="py-3 px-6 text-left whitespace-nowrap">
                   <div className="flex justify-between text-[13px] font-medium">
                     Data team#1-#Specialist
                     {/* popup */}
-                    <div className="relative inline-block" ref={popupRefOne}>
+                    <div className="inline-block" ref={popupRefOne}>
                       <button onClick={togglePopup} className="text-black cursor-pointer">
                         <TbDotsVertical />
                       </button>
                       {isMemberOne && (
-                        <div className="absolute right-0 mt-2 z-50 bg-white border border-gray-300 rounded-md shadow-lg">
+                        <div className="absolute right-6 z-50 bg-white border border-gray-300 rounded-md shadow-lg">
                           <div className="py-2 p-0.5">                           
                             <ul>
-                              <li className="flex items-center gap-2 cursor-pointer rounded-lg hover:bg-gray-200 px-3 py-2">
+                              <li className="flex items-center gap-2 text-[12px] cursor-pointer rounded-lg hover:bg-gray-200 px-3 py-1">
                                 <RiArrowUpDownLine /> Change Member
                               </li>
-                              <li className="flex items-center gap-2 cursor-pointer rounded-lg hover:bg-gray-200 px-3 py-2">
+                              <li className="flex items-center gap-2 text-[12px] cursor-pointer rounded-lg hover:bg-gray-200 px-3 py-1">
                                 <RiArrowLeftRightFill />Change Position
                               </li>
-                              <li className="flex items-center gap-2 cursor-pointer rounded-lg text-red-600 hover:bg-gray-200 px-3 py-2">
+                              <li className="flex items-center gap-2 text-[12px] cursor-pointer rounded-lg text-red-600 hover:bg-gray-200 px-3 py-1">
                                 <RiDeleteBin6Line />Delete Position
                               </li>
-                              <li className="flex items-center gap-2 cursor-pointer rounded-lg text-red-600 hover:bg-gray-200 px-3 py-2">
+                              <li className="flex items-center gap-2 text-[12px] cursor-pointer rounded-lg text-red-600 hover:bg-gray-200 px-3 py-1">
                                 <RiDeleteBin6Line /> Delete Member
                               </li>
                             </ul>

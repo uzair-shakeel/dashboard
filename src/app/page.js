@@ -940,10 +940,10 @@ export default function Home() {
 
             {/* Panel */}
             {isPopupOpen && (
-              <div className="bg-white shadow-2xl border-l border-stone-300 max-w-[600px] sm:w-[600px] absolute top-0 right-0 ml-20">
+              <div className="bg-white shadow-2xl border-l border-stone-300 w-[50%] absolute top-0 right-0 ml-20">
                 <div className="relative p-2 sm:p-4">
                   {/* Close Button */}
-                  <button onClick={closePopup} className="absolute lg:right-3 right-14 top-3 border rounded-full z-50  text-xl p-1 hover:bg-gray-100 transition duration-300">
+                  <button onClick={closePopup} className="absolute lg:right-3 right-14 top-3 border rounded-full z-50 text-xl p-1 hover:shadow-lg transition duration-300">
                     <RxCross2 />
                   </button>
                   <Panel />
