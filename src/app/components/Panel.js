@@ -10,23 +10,12 @@ import { RiArrowUpDownLine } from "react-icons/ri";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import MemberManage from "./MemberManage";
 
+
 const Panel = () => {
   const [groupName, setGroupName] = useState("Creative Sleepers Cell");
   const [isEditing, setIsEditing] = useState(false);
   const [tagInput, setTagInput] = useState("");
   const [tags, setTags] = useState(["harm", "pay", "dummy", "sleepers", "epeda", "mattress",]);
-  const [isMemberOne, setIsMemberOne] = useState(false);
-  const [isMemberTwo, setIsMemberTwo] = useState(false);
-  const popupRefOne = useRef(null);
-  const popupRefTwo = useRef(null);
-
-  const togglePopup = () => {
-    setIsMemberOne(!isMemberOne);
-  };
-
-  const togglePopup1 = () => {
-    setIsMemberTwo(!isMemberTwo);
-  };
 
   const handleInputChange = (event) => {
     setGroupName(event.target.value);
@@ -64,25 +53,47 @@ const Panel = () => {
   };
 
 
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (
-        popupRefOne.current &&
-        !popupRefOne.current.contains(event.target) &&
-        popupRefTwo.current &&
-        !popupRefTwo.current.contains(event.target)
-      ) {
-        setIsMemberOne(false);
-        setIsMemberTwo(false);
-      }
-    };
+  const [openPopup, setOpenPopup] = useState(null); // Track the currently open popup
 
-    document.addEventListener('click', handleClickOutside);
+  // Toggle function for popup one
+  const togglePopup = (id) => {
+    if (openPopup === id) {
+      setOpenPopup(null); // Close the popup if it's already open
+    } else {
+      setOpenPopup(id); // Open the selected popup
+    }
+  };
 
-    return () => {
-      document.removeEventListener('click', handleClickOutside);
-    };
-  }, []);
+
+
+  const [isOpen, setIsOpen] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedOption, setSelectedOption] = useState(null);
+
+  const options = [
+    { value: 'americas', label: 'Americas' },
+    { value: 'dach', label: 'DACH' },
+    { value: 'south-europe', label: 'South Europe' },
+  ];
+
+  const filteredOptions = options.filter(option =>
+    option.label.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const toggleDropdown = () => setIsOpen(!isOpen);
+
+  const handleOptionClick = option => {
+    setSelectedOption(option);
+    setIsOpen(false);
+    setSearchTerm('');
+  };
+
+
+  const handleClear = () => {
+    setSelectedOption(null);
+    setIsOpen(false);
+    setSearchTerm('');
+  };
 
   return (
     <div>
@@ -136,17 +147,39 @@ const Panel = () => {
       </div>
       
       {/* Parent Group */}
-      <div className="pt-2 px-2">
-        <p className="py-2 text-[14px] font-medium text-[#1A1A1A]">Parent Group</p>
-        <select
-          placeholder="select..."
-          className="w-full p-2 bg-[#F3F3F3] text-[14px] font-normal border-[#DBDBDB] border outline-none rounded-md"
+      <div className="relative w-full pt-2 px-2">
+      <p className="py-2 text-[14px] font-medium text-[#1A1A1A]">Parent Group</p>
+        <div
+          className="p-2 bg-[#F3F3F3] text-[14px] font-normal border-[#DBDBDB] border outline-none rounded-md cursor-pointer"
+          onClick={toggleDropdown}
         >
-          <option disabled selected>Select...</option>
-          <option className="">Americas</option>
-          <option>DACH</option>
-          <option>South Europe</option>
-        </select>
+          {selectedOption ? selectedOption.label : 'Select...'}
+        </div>
+        {isOpen && (
+         <div>
+           <div className="absolute z-10 w-[96%] sm:w-[98%] mt-1 bg-white border border-[#DBDBDB] rounded-xl">
+            <input
+              type="text"
+              value={searchTerm}
+              onChange={e => setSearchTerm(e.target.value)}
+              className="py-1.5 px-2 border w-[97%] my-2 mx-2 border-[#DBDBDB] outline-none rounded-xl"
+              placeholder="Search..."
+            />
+            <ul className="overflow-y-auto mx-2 mb-2">
+              {filteredOptions.map(option => (
+                <li
+                  key={option.value}
+                  className="py-1.5 px-2 hover:bg-[#F3F3F3] rounded-lg text-[14px] cursor-pointer"
+                  onClick={() => handleOptionClick(option)}
+                >
+                  {option.label}
+                </li>
+              ))}
+            </ul>
+            <button className="px-4 pt-2 mb-2 w-full border-t border-[#DBDBDB] text-left flex items-center gap-2 text-[14px]" onClick={handleClear}><RxCross2 />Clear</button>
+          </div>
+         </div>
+        )}
       </div>
 
       {/* Group responsible for */}
@@ -243,18 +276,18 @@ const Panel = () => {
                     <p className="text-[12px] text-[#1A1A1A] font-normal">staff142@orgx.com</p>
                   </div>
                 </td>
-                <td className="py-3 px-6 text-left whitespace-nowrap ">
+                <td className="py-3 px-6 text-left whitespace-nowrap">
                   <div className="flex justify-between text-[13px] font-medium">
                     Data team#1-#Specialist
                     {/* popup */}
-                    <div className="relative inline-block" ref={popupRefTwo}>
-                      <button onClick={togglePopup1} className="text-black cursor-pointer">
+                    <div className="relative inline-block">
+                      <button onClick={() => togglePopup(1)} className="text-black cursor-pointer">
                         <TbDotsVertical />
                       </button>
-                      {isMemberTwo && (
+                      {openPopup === 1 && (
                         <div className="absolute right-0 top-5 z-50 bg-white border border-gray-300 rounded-md shadow-lg">
                           <div className="py-2 p-0.5">                           
-                          <ul>
+                            <ul>
                               <li className="flex items-center gap-2 text-[12px] cursor-pointer rounded-lg hover:bg-gray-200 px-3 py-1">
                                 <RiArrowUpDownLine /> Change Member
                               </li>
@@ -277,8 +310,8 @@ const Panel = () => {
               </tr>
 
               {/* Data Two */}
-              <tr className="border-b border-gray-200 hover:bg-gray-100">
-                <td className="py-8 px-4 flex gap-2 items-center text-left whitespace-nowrap">
+              <tr className="border-b border-gray-200">
+                <td className="pt-7 pb-6 px-4 flex gap-2 items-center text-left whitespace-nowrap">
                   <Image src='/1.png' alt="Profile" width={30} height={30} className="rounded-full" />
                   <div>
                     <p className="text-[14px] text-[#1A1A1A] font-medium">Staff #142</p>
@@ -289,12 +322,12 @@ const Panel = () => {
                   <div className="flex justify-between text-[13px] font-medium">
                     Data team#1-#Specialist
                     {/* popup */}
-                    <div className="inline-block" ref={popupRefOne}>
-                      <button onClick={togglePopup} className="text-black cursor-pointer">
+                    <div className="relative inline-block">
+                      <button onClick={() => togglePopup(2)} className="text-black cursor-pointer">
                         <TbDotsVertical />
                       </button>
-                      {isMemberOne && (
-                        <div className="absolute right-6 z-50 bg-white border border-gray-300 rounded-md shadow-lg">
+                      {openPopup === 2 && (
+                        <div className="absolute right-0 top-5 z-50 bg-white border border-gray-300 rounded-md shadow-lg">
                           <div className="py-2 p-0.5">                           
                             <ul>
                               <li className="flex items-center gap-2 text-[12px] cursor-pointer rounded-lg hover:bg-gray-200 px-3 py-1">
