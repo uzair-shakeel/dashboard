@@ -9,6 +9,7 @@ import { RiArrowLeftRightFill } from "react-icons/ri";
 import { RiArrowUpDownLine } from "react-icons/ri";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import MemberManage from "./MemberManage";
+import { IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 
 
 const Panel = () => {
@@ -149,12 +150,13 @@ const Panel = () => {
       {/* Parent Group */}
       <div className="relative w-full pt-2 px-2">
       <p className="py-2 text-[14px] font-medium text-[#1A1A1A]">Parent Group</p>
-        <div
-          className="p-2 bg-[#F3F3F3] text-[14px] font-normal border-[#DBDBDB] border outline-none rounded-md cursor-pointer"
-          onClick={toggleDropdown}
-        >
-          {selectedOption ? selectedOption.label : 'Select...'}
-        </div>
+       <div className="flex items-center justify-between p-2 bg-[#F3F3F3] text-[14px] font-normal border-[#DBDBDB] border outline-none rounded-md cursor-pointer" onClick={toggleDropdown}>
+          <div className="">
+            {selectedOption ? selectedOption.label : 'Select...'}
+          </div>
+          <button><IoIosArrowDown/></button>
+       </div>
+        
         {isOpen && (
          <div>
            <div className="absolute z-10 w-[96%] sm:w-[98%] mt-1 bg-white border border-[#DBDBDB] rounded-xl">

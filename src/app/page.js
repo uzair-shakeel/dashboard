@@ -21,7 +21,7 @@ export default function Home() {
   };
   return (
     <div className="w-full lg:flex">
-        <div className="w-[220px] lg:block hidden">
+        <div className="w-[220px] lg:block hidden min-h-full">
           <SideBar/>
         </div>
         <div className="w-full relative">
@@ -940,7 +940,7 @@ export default function Home() {
 
             {/* Panel */}
             {isPopupOpen && (
-              <div className="bg-white shadow-2xl border-l border-stone-300 w-[98%] md:w-[50%] absolute top-0 bottom-0 right-0">
+              <div className="bg-white shadow-2xl border-l border-stone-300 w-[98%] md:w-[50%] h-full absolute top-0 bottom-0 right-0">
                 <div className="relative p-2 sm:p-4">
                   {/* Close Button */}
                   <button onClick={closePopup} className="absolute lg:right-3 right-14 top-3 border rounded-full z-50 text-xl p-1 hover:shadow-lg transition duration-300">
